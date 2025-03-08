@@ -1,47 +1,84 @@
-# Getting Started with Create React App
+# CustomButton Component
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A flexible and reusable button component built with Material-UI that supports icons, tooltips, and various customization options.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Multiple button variants (text, outlined, contained)
+- Color options (success, error, warning, info, primary, secondary)
+- Size variations (small, medium, large)
+- Icon support with position control (left/right)
+- Optional tooltip with customizable position
+- Fully customizable styling through MUI's sx prop
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Make sure you have @mui/material installed in your project:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+npm install @mui/material @emotion/react @emotion/styled
+```
 
-### `npm test`
+## Usage Examples
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+// Basic usage
+<CustomButton variant="contained" backgroundColor="primary">
+  Click Me
+</CustomButton>
 
-### `npm run build`
+// With icon
+<CustomButton 
+  variant="outlined" 
+  backgroundColor="success"
+  iconSrc="/path/to/icon.svg"
+  iconPosition="left"
+>
+  Button with Icon
+</CustomButton>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+// With tooltip
+<CustomButton 
+  variant="contained"
+  backgroundColor="warning"
+  enableTooltip
+  tooltipText="This is a tooltip"
+  tooltipPosition="top"
+>
+  Hover Me
+</CustomButton>
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Props
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| variant | `'text'` \| `'outlined'` \| `'contained'` | - | The variant of the button |
+| backgroundColor | `'success'` \| `'error'` \| `'warning'` \| `'info'` \| `'primary'` \| `'secondary'` | - | The color of the button |
+| size | `'small'` \| `'medium'` \| `'large'` | - | The size of the button |
+| iconSrc | `string` | - | URL/path to the icon image |
+| iconPosition | `'left'` \| `'right'` | `'left'` | Position of the icon relative to text |
+| enableTooltip | `boolean` | `false` | Enable/disable tooltip |
+| tooltipText | `string` | `''` | Text to display in tooltip |
+| tooltipPosition | `'top'` \| `'bottom'` \| `'left'` \| `'right'` | `'top'` | Position of the tooltip |
+| sx | `SxProps` | - | MUI's sx prop for custom styling |
+| children | `React.ReactNode` | - | Button content |
+| onClick | `() => void` | - | Click handler function |
 
-### `npm run eject`
+## Styling
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The component can be styled using MUI's sx prop:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-# Custom-Button
+```
+<CustomButton 
+  sx={{
+    borderRadius: 2,
+    padding: 2,
+    '&:hover': {
+      backgroundColor: 'secondary.light'
+    }
+  }}
+>
+  Styled Button
+</CustomButton>
+```
